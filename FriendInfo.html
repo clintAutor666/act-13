@@ -5,8 +5,8 @@
     <title>Friends Information Form</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background-color: #F2F2F2;
+        font-family: Serif, Times New Roman;
+		background-color: #FCDFDE;
       }
       h1 {
         text-align: center;
@@ -51,10 +51,39 @@
       input[type="submit"]:hover {
         background-color: #FF7878;
       }
+	  
+	  textarea {
+		display: block;
+		width: 100%;
+		padding: 10px;
+		border: none;
+		border-radius: 5px;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+		}
+		
+		.message {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: none;
+}
     </style>
+	<script>
+    function returnToForm() {
+      document.getElementById('message').style.display = 'block';
+
+      setTimeout(function() {
+        document.getElementById('message').style.display = 'none';
+
+        window.location.href = "FriendInfo.html";
+      }, 3000);
+    }
+  </script>
   </head>
   <body>
-    <h1>Friends Information Form</h1>
+    <h1>FRIEND REGISTRY FORM</h1>
     <form method="post" action="https://script.google.com/macros/s/AKfycby1Y20jFzZoXAenidRXP1bjl8FwtkvfJpLLQ7Pb7QlcxlqewPKYVd-wpT9wJcfXQCnpkg/exec">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
@@ -72,17 +101,12 @@
         <option value="other">Other</option>
       </select>
       
-      <label for="hobbies">Hobbies:</label><br>
-      <input type="checkbox" id="hobby1" name="hobbies[]" value="reading">
-      <label for="hobby1">Reading</label>
+	  <textarea name="message" id="textarea" rows="5" placeholder="Your message..." required></textarea>
       
-      <input type="checkbox" id="hobby2" name="hobbies[]" value="hiking">
-      <label for="hobby2">Hiking</label>
-      
-      <input type="checkbox" id="hobby3" name="hobbies[]" value="traveling">
-      <label for="hobby3">Traveling</label>
-      
-      <input type="submit" value="Submit">
+      <center><input type="submit" value="Submit" onclick="returnToForm()"></center>
     </form>
+	<div id="message" class="message">
+      <p>SUCCESS!</p>
+    </div>
   </body>
 </html>
